@@ -32,11 +32,10 @@ def run(file_name,pixel_v_coordinate,upsample_flag,slice_width):
             if not read:
                 break
             # print(frame.shape)
-            h,w,c = frame.shape        # todo opt
+            h,w,c = frame.shape # todo clean
             new_line = np.array([x[pixel_v_coordinate:(pixel_v_coordinate+slice_width)][0][::-1] for x in frame]).astype('uint8').reshape(h, -1, c) # [0] is kinda hacky
-
             if upsample_flag:
-                new_line = upsample(new_line)
+                new_line = upsample(new_line) # upsample not tested prob faulty
             for _ in range(slice_width):
                 output_frame.append(new_line)
     # formatting, hacky just to make it work

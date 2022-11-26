@@ -1,0 +1,8 @@
+ipywidgets
+matplotlib
+numpy
+notebook
+widgetsnbextension
+opencv-python
+Pillow
+ffmpeg

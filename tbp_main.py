@@ -51,7 +51,7 @@ def run(file_name,pixel_v_coordinate,upsample_flag,slice_width):
 
 if __name__ == '__main__':
     # file_name = 'klara_4k_55fps.MOV'
-    file_name = 'fastnacht_short.mp4'
+    # file_name = 'fastnacht_short.mp4'
     file_name = 'test2.MOV'
     pixel_v_coordinate = 500 # vertical pixel line to use for collating
     upsample_flag = True

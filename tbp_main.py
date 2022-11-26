@@ -33,16 +33,13 @@ def run(file_name,pixel_v_coordinate,upsample_flag,slice_width):
                 break
             # print(frame.shape)
             h,w,c = frame.shape        # todo opt
-            # if slice_width == 1:
-            new_line = np.array([x[pixel_v_coordinate:(pixel_v_coordinate+slice_width)][0][::-1] for x in frame]).astype('uint8').reshape(h, -1, c)
-            # else:
-            #     new_line = np.array([x[pixel_v_coordinate:(pixel_v_coordinate+slice_width)][::-1] for x in frame]).astype('uint8').reshape(h, -1, c)
-            # print(new_line.shape)
+            new_line = np.array([x[pixel_v_coordinate:(pixel_v_coordinate+slice_width)][0][::-1] for x in frame]).astype('uint8').reshape(h, -1, c) # [0] is kinda hacky
+
             if upsample_flag:
                 new_line = upsample(new_line)
             for _ in range(slice_width):
                 output_frame.append(new_line)
-    # formatting
+    # formatting, hacky just to make it work
     output_frame_array = np.array(output_frame[::-1])
     output_frame_array_reshape = output_frame_array.reshape(-1, h_video, 3)
     pil_img = Image.fromarray(output_frame_array_reshape).convert('RGB')
@@ -56,7 +53,8 @@ def run(file_name,pixel_v_coordinate,upsample_flag,slice_width):
 if __name__ == '__main__':
     # file_name = 'klara_4k_55fps.MOV'
     file_name = 'fastnacht_short.mp4'
+    file_name = 'test2.MOV'
     pixel_v_coordinate = 500 # vertical pixel line to use for collating
     upsample_flag = True
-    slice_width = 1  # lowers horizontal res, set to 1 if upsample_flag set to false
+    slice_width = 2  # lowers horizontal res, set to 1 if upsample_flag set to false
     run(file_name,pixel_v_coordinate,upsample_flag,slice_width)

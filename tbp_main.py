@@ -53,7 +53,8 @@ if __name__ == '__main__':
     # file_name = 'klara_4k_55fps.MOV'
     # file_name = 'fastnacht_short.mp4'
     file_name = 'test2.MOV'
-    pixel_v_coordinate = 500 # vertical pixel line to use for collating
+    # file_name = 'test3.MOV'
+    pixel_v_coordinate = 100 # vertical pixel line to use for collating
     upsample_flag = True
     slice_width = 2  # lowers horizontal res, set to 1 if upsample_flag set to false
     run(file_name,pixel_v_coordinate,upsample_flag,slice_width)
